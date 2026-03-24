@@ -32,6 +32,7 @@ from nerfstudio.data.dataparsers.nerfosr_dataparser import NeRFOSRDataParserConf
 from nerfstudio.data.dataparsers.nerfstudio_dataparser import NerfstudioDataParserConfig
 from nerfstudio.data.dataparsers.nuscenes_dataparser import NuScenesDataParserConfig
 from nerfstudio.data.dataparsers.phototourism_dataparser import PhototourismDataParserConfig
+from nerfstudio.data.dataparsers.replica_dataparser import ReplicaDataParserConfig
 from nerfstudio.data.dataparsers.scannet_dataparser import ScanNetDataParserConfig
 from nerfstudio.data.dataparsers.scannetpp_dataparser import ScanNetppDataParserConfig
 from nerfstudio.data.dataparsers.sdfstudio_dataparser import SDFStudioDataParserConfig
@@ -47,6 +48,7 @@ dataparsers = {
     "nuscenes-data": NuScenesDataParserConfig(),
     "dnerf-data": DNeRFDataParserConfig(),
     "phototourism-data": PhototourismDataParserConfig(),
+    "replica-data": ReplicaDataParserConfig(),
     "dycheck-data": DycheckDataParserConfig(),
     "scannet-data": ScanNetDataParserConfig(),
     "sdfstudio-data": SDFStudioDataParserConfig(),
