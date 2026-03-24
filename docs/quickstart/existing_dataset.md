@@ -24,6 +24,10 @@ ns-download-data eyefultower --capture-name riverview seating_area apartment --r
 ns-download-data dnerf
 ```
 
+## Replica
+
+See the standalone [Replica dataset guide](replica_dataset.md) for download, extraction, and training commands for `replica-data`.
+
 ## Dataset Summary
 
 Many of these datasets are used as baselines to evaluate new research in novel view synthesis, such as in the [original Nerfstudio paper][paper]. Scenes from these datasets lie at dramatically different points in the space of images, across axes such as photorealism (synthetic vs real), dynamic range (LDR vs HDR), scale (number of images), and resolution. The tables below describe some of this variation, and hopefully make it easier to pick an appropriate dataset for your research or application.
