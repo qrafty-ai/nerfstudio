@@ -453,7 +453,7 @@ class LocalWriter:
                 )
             latest_map, new_key = self._consolidate_events()
             self._update_header(latest_map, new_key)
-            self._print_stats(latest_map)
+            self._print_stats(latest_map, step=step)
 
     def write_config(self, name: str, config_dict: Dict[str, Any], step: int):
         """Function that writes out the config to local
@@ -494,15 +494,16 @@ class LocalWriter:
                 print(mssg)
                 print("-" * len(mssg))
 
-    def _print_stats(self, latest_map, padding=" "):
+    def _print_stats(self, latest_map, padding=" ", step: Optional[int] = None):
         """helper to print out the stats in a readable format
 
         Args:
             latest_map: the most recent dictionary of stats that have been recorded
             padding: type of characters to print to pad open space
         """
-        step = GLOBAL_BUFFER["step"]
-        fraction_done = step / GLOBAL_BUFFER["max_iter"]
+        if step is None:
+            step = GLOBAL_BUFFER.get("step", 0)
+        fraction_done = step / GLOBAL_BUFFER["max_iter"] if GLOBAL_BUFFER["max_iter"] else 0
         curr_mssg = f"{step} ({fraction_done * 100:.02f}%)"
         curr_mssg = f"{curr_mssg:<20}"
         for name, v in latest_map.items():

@@ -241,6 +241,16 @@ class Trainer:
         self._init_viewer_state()
         with TimeWriter(writer, EventName.TOTAL_TRAIN_TIME):
             num_iterations = self.config.max_num_iterations - self._start_step
+            if num_iterations <= 0:
+                CONSOLE.print(
+                    "[yellow]No training iterations to run: loaded checkpoint step "
+                    f"{self._start_step - 1} but max_num_iterations is {self.config.max_num_iterations}. "
+                    "Increase --max-num-iterations to continue training from this checkpoint.[/yellow]"
+                )
+                self.step = max(self._start_step - 1, 0)
+                self._after_train()
+                return
+
             step = 0
             self.stop_training = False
             for step in range(self._start_step, self._start_step + num_iterations):
